@@ -1,5 +1,8 @@
 #!/bin/sh -f
 
+mkdir temp
+cd temp
+
 export START_PWD=$PWD
 echo "Installing dependencies."
 
