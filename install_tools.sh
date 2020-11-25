@@ -113,9 +113,8 @@ sudo make install
 cd $START_PWD
 
 echo "# Installing gaw3"
-wget http://download.tuxfamily.org/gaw/download/gaw3-20200922.tar.gz
-tar zxvf gaw3-20200922.tar.gz
-cd gaw3-20200922
+git clone https://github.com/StefanSchippers/xschem-gaw.git
+cd xschem-gaw
 ./configure
 make -j$(nproc)
 sudo make install
