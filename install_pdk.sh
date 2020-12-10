@@ -1,8 +1,8 @@
 #!/bin/sh -f
 
 cd
-mkdir mabrains
-cd mabrains
+mkdir skywater
+cd skywater
 git clone https://github.com/google/skywater-pdk
 cd skywater-pdk
 git submodule init libraries/sky130_fd_io/latest
@@ -16,16 +16,16 @@ git submodule init libraries/sky130_fd_sc_lp/latest
 git submodule init libraries/sky130_fd_sc_hvl/latest
 git submodule update
 make timing 
-cd ~/mabrains/
+cd ~/skywater/
 git clone git://opencircuitdesign.com/open_pdks
 cd open_pdks
 git checkout open_pdks-1.0
-mkdir -p $HOME/mabrains/pdk/skywater130
-./configure --with-sky130-source=$HOME/mabrains/skywater-pdk --with-sky130-local-path=$HOME/mabrains/pdk/skywater130 --with-ef-style
+mkdir -p $HOME/skywater/pdk/skywater130
+./configure --with-sky130-source=$HOME/skywater/skywater-pdk --with-sky130-local-path=$HOME/skywater/pdk/skywater130 --with-ef-style
 cd sky130
 make
 make install
-cd ~/mabrains
+cd ~/skywater
 
 echo "# Installing xschem sky130"
 git clone https://github.com/StefanSchippers/xschem_sky130.git
