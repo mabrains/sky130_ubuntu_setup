@@ -1,4 +1,4 @@
-# sky130_ubuntu_setup
+# Skywaters 130nm Technology Ubuntu Setup Scripts
 
 Ubuntu scripts that are used for setting up your machine for Skywater 130um designs.
 
