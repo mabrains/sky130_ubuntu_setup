@@ -16,6 +16,7 @@ mkdir skywater
 cd skywater
 git clone https://github.com/google/skywater-pdk
 cd skywater-pdk
+git checkout v0.0.0-303-g3d7617a
 git submodule init libraries/sky130_fd_io/latest
 git submodule init libraries/sky130_fd_pr/latest
 git submodule init libraries/sky130_fd_sc_hd/latest
@@ -46,5 +47,6 @@ echo "# Preparing tapeout folder."
 cd
 mkdir tapeout
 git clone https://github.com/efabless/open_mpw_precheck
+git clone https://github.com/efabless/openlane.git -b mpw-one-a
 git clone https://github.com/efabless/caravel.git -b mpw-one-a caravel_$1
 
