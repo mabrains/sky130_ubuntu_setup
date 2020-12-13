@@ -1,5 +1,16 @@
 #!/bin/sh -f
 
+## Installing docker
+echo "## Installing docker"
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt update
+sudo apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo usermod -aG docker ${USER}
+
+echo "## Installing PDK."
 cd
 mkdir skywater
 cd skywater
@@ -16,10 +27,11 @@ git submodule init libraries/sky130_fd_sc_lp/latest
 git submodule init libraries/sky130_fd_sc_hvl/latest
 git submodule update
 make timing 
+
+echo "## Installing Open PDK"
 cd ~/skywater/
-git clone git://opencircuitdesign.com/open_pdks
+git clone https://github.com/RTimothyEdwards/open_pdks.git -b mpw-one-a
 cd open_pdks
-git checkout open_pdks-1.0
 mkdir -p $HOME/skywater/pdk/skywater130
 ./configure --with-sky130-source=$HOME/skywater/skywater-pdk --with-sky130-local-path=$HOME/skywater/pdk/skywater130 --with-ef-style
 cd sky130
@@ -30,15 +42,9 @@ cd ~/skywater
 echo "# Installing xschem sky130"
 git clone https://github.com/StefanSchippers/xschem_sky130.git
 
-echo "# Installing sample designs"
-mkdir samples
-cd samples
-git clone https://github.com/bluecmd/learn-sky130.git
-git clone https://github.com/westonb/sky130-analog.git
-git clone https://github.com/yrrapt/amsat_txrx_ic.git
-git clone https://github.com/diadatp/sky130_rf_tools.git
-git clone https://github.com/pepijndevos/sky130-experiments.git
-git clone https://github.com/efabless/caravel.git
-
-
+echo "# Preparing tapeout folder."
+cd
+mkdir tapeout
+git clone https://github.com/efabless/open_mpw_precheck
+git clone https://github.com/efabless/caravel.git -b mpw-one-a caravel_$1
 
