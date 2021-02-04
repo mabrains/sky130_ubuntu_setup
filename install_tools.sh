@@ -1,6 +1,6 @@
 #!/bin/sh -f
 
-mkdir temp
+mkdir -p temp
 cd temp
 
 export START_PWD=$PWD
@@ -34,7 +34,7 @@ echo "## Installing tools"
 echo "# Installing ngspice"
 wget -O ngspice-34.tar.gz https://downloads.sourceforge.net/project/ngspice/ng-spice-rework/34/ngspice-34.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fngspice%2Ffiles%2Fng-spice-rework%2F34%2Fngspice-34.tar.gz%2Fdownload&ts=1612217502
 tar zxvf ngspice-34.tar.gz
-cd ngspice-33
+cd ngspice-34
 mkdir release
 cd release
 ../configure --with-x --enable-xspice --enable-cider --enable-openmp --with-readlines=yes --disable-debug
@@ -60,10 +60,10 @@ make
 sudo make install
 cd $START_PWD
 
-echo "# Installing klayout"
-wget https://www.klayout.org/downloads/Ubuntu-20/klayout_0.26.8-1_amd64.deb
-sudo dpkg -i ./klayout_0.26.8-1_amd64.deb
-sudo apt-get install -f -y
+#echo "# Installing klayout"
+#wget https://www.klayout.org/downloads/Ubuntu-20/klayout_0.26.8-1_amd64.deb
+#sudo dpkg -i ./klayout_0.26.8-1_amd64.deb
+#sudo apt-get install -f -y
 
 echo "# Installing netgen"
 wget http://opencircuitdesign.com/netgen/archive/netgen-1.5.165.tgz
